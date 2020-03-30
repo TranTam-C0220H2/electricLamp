@@ -8,7 +8,7 @@
     </style>
 </head>
 <body>
-<input type="button" id="switchLamp" onclick="on_OffLamp()" value="OFF">
+<input type="button" id="switchLamp" onclick="on_OffLamp()" value="ON">
 <canvas id="myCanvas" width="100" height="140" style="border: 1px solid red"></canvas>
 <script>
     function Switch() {
@@ -39,10 +39,10 @@
     function on_OffLamp() {
         if (mySwitch.status) {
             mySwitch.status = false;
-            document.getElementById('switchLamp').value = 'OFF';
+            document.getElementById('switchLamp').value = 'ON';
         } else {
             mySwitch.status = true;
-            document.getElementById('switchLamp').value = 'ON';
+            document.getElementById('switchLamp').value = 'OFF';
         }
         display();
     }
