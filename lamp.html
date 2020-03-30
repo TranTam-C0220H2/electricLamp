@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bóng đèn</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<input type="button" id="switchLamp" onclick="on_OffLamp()" value="OFF">
+<canvas id="myCanvas" width="100" height="140" style="border: 1px solid red"></canvas>
+<script>
+    function Switch() {
+        this.status = false;
+    }
+
+    function Lamp() {
+        this.turn = function (Switch) {
+            if (Switch.status) {
+                return 'lamp-on.jpg';
+            } else {
+                return 'lamp-off.png';
+            }
+        }
+    }
+
+    let mySwitch = new Switch();
+    let lamp = new Lamp();
+    let c = document.getElementById('myCanvas');
+    let ctx = c.getContext('2d');
+    let lampImage = new Image();
+
+    function display() {
+        lampImage.src = lamp.turn(mySwitch);
+        ctx.drawImage(lampImage, 10, 10, 100, 140);
+    }
+
+    function on_OffLamp() {
+        if (mySwitch.status) {
+            mySwitch.status = false;
+            document.getElementById('switchLamp').value = 'OFF';
+        } else {
+            mySwitch.status = true;
+            document.getElementById('switchLamp').value = 'ON';
+        }
+        display();
+    }
+
+    display();
+</script>
+</body>
+</html>
